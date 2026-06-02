@@ -3,7 +3,7 @@ import os
 import winsound
 
 
-class Item:  # Sumagang
+class Item:  
     def __init__(self, item_id, name, category, stock, threshold, price):
         self.item_id = item_id
         self.name = name
@@ -15,7 +15,7 @@ class Item:  # Sumagang
         self.right = None
 
 
-class Warehouse:  # Sumagang
+class Warehouse: 
     def __init__(self):
         self.root = None
 
@@ -36,7 +36,7 @@ class Warehouse:  # Sumagang
         self.root = self.insert(self.root, new_item)
         return True
 
-    # ----------- Update and Delete Functions (SARAYAN) -----------
+    # ----------- Update and Delete Functions  -----------
     def update_item(self, item_id, name=None, category=None, stock=None, threshold=None, price=None):
         current = self.root
         while current is not None:
@@ -108,7 +108,7 @@ class Warehouse:  # Sumagang
             root.right = self._delete_node(root.right, temp.item_id)
         return root
 
-    # ----------- Search ID and Price Range (ENANO) -----------
+    # ----------- Search ID and Price Range  -----------
 
     def search_item_by_id(self, target_id):
         found_node = self._search_id_helper(self.root, target_id)
@@ -142,7 +142,7 @@ class Warehouse:  # Sumagang
             tracker["found"] = True
         self._price_range_helper(current_node.right, min_price, max_price, tracker)
 
-        # In-Order Traversal for Display (JOB)
+        # In-Order Traversal for Display 
 
     def inorder_traversal(self):
         if self.root is None:
@@ -170,7 +170,7 @@ class Warehouse:  # Sumagang
 
             self._inorder_helper(root.right)
 
-    # Display All - (PIO)
+    # Display All - 
     def display_all(self):
         if self.root is None:
             print(" 📭 Inventory is empty!")
@@ -212,7 +212,7 @@ class Warehouse:  # Sumagang
             self._collect_all(root.right, result)
 
 
-    # ----------- Low Stock Alert (Martin) -----------
+    # ----------- Low Stock Alert  -----------
     def low_stock(self, root):
         low_items = []
         self._low_stock_helper(root, low_items)
@@ -226,7 +226,7 @@ class Warehouse:  # Sumagang
             self._low_stock_helper(root.right, low_items)
 
 
-# Animation (Sumagang)
+# Animation 
 def loading_animation_in():
     print("⏳ Inventory Loading", end="", flush=True)
     for _ in range(4):
@@ -253,7 +253,7 @@ def returning_menu_animation():
     print()
 
 
-#  Clear Automatic Terminal (Sumagang)
+#  Clear Automatic Terminal 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -289,7 +289,7 @@ def menu_options():
   └─────────────────────────────────────────┘""")
 
 
-# Error Handling - Sumagang
+# Error Handling 
 def get_int(prompt):
     # """INVALID INPUT: keeps asking until a valid non-negative integer is entered."""
     while True:
@@ -354,7 +354,7 @@ def get_text(prompt):
         return raw
 
 
-# Main - Sumagang/Sarayan
+# Main
 def main():
     warehouse = Warehouse()
 
@@ -383,7 +383,7 @@ def main():
             continue
 
 
-        #  ── 0. Insert Stock ── (Sumagang)
+        #  ── 0. Insert Stock ── 
         if choice == "0":
             clear()
             print("\n --- INSERT ITEM ---")
@@ -416,7 +416,7 @@ def main():
                 returning_menu_animation()
 
 
-        # ── 1. Update Stock ── (Sarayan)
+        # ── 1. Update Stock ── 
         elif choice == "1":
             while True:
                 clear()
@@ -517,7 +517,7 @@ def main():
                     break
 
 
-        #  ── 2. Delete ── (Sarayan)
+        #  ── 2. Delete ── 
         elif choice == "2":
             while True  :
                 print("\n --- DELETE ITEM ---")
@@ -543,9 +543,9 @@ def main():
 
 
 
-        #  ── 3. Search by ID ── (Enano)
+        #  ── 3. Search by ID ──
         elif choice == '3':
-            # EMPTY: search on empty structure (Enano)
+            # EMPTY: search on empty structure 
             if warehouse.is_empty():
                 print(" 📭 Cannot search. The warehouse inventory is completely empty!")
             else:
@@ -584,7 +584,7 @@ def main():
                         returning_menu_animation()
                         break
 
-        # ── 4. Price Range ── (Enano)
+        # ── 4. Price Range ── 
         elif choice == '4':
             if warehouse.is_empty():
                 print(" 📭 Cannot search. The warehouse inventory is completely empty!")
@@ -616,7 +616,7 @@ def main():
                         returning_menu_animation()
                         break
 
-        # ── 5. Display All  ── (Pio)
+        # ── 5. Display All  ── 
         elif choice == "5":
             clear()
             title()
@@ -625,7 +625,7 @@ def main():
             input("\n  Press Enter to return to Main Menu...")
             returning_menu_animation()
 
-        #    ── 6. Traversal In Order(BYID)  ── (JOB)
+        #    ── 6. Traversal In Order(BYID)  ── 
         elif choice == "6":
             clear()
             title()
@@ -634,7 +634,7 @@ def main():
             input("\n  Press Enter to return to Main Menu...")
             returning_menu_animation()
 
-        # ── 7. Low Stock ── (Martin)
+        # ── 7. Low Stock ── 
         elif choice == "7":
             clear()
             title()
